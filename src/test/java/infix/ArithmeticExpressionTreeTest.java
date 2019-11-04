@@ -23,11 +23,11 @@ public class ArithmeticExpressionTreeTest {
 
 	@Test
 	public void test2() {
-		String expr = "((1+2)*3)";
+		String expr = "(((1+2)*3)+(6*20)))";
 		ArithmeticExpressionTree myTree;
 		try {
 			myTree = new ArithmeticExpressionTree(expr);
-			assertEquals(myTree.eval(), new BigDecimal(9.0));
+			assertEquals(myTree.eval(), new BigDecimal(129.0));
 		}
 		catch( MalformedExpressionException e ) {
 			fail("Exception!");

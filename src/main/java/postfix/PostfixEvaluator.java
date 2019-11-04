@@ -41,7 +41,6 @@ public class PostfixEvaluator {
      */
     double eval( ) throws MalformedExpressionException {
         Stack<Token> stack;
-        // TODO: Implement this method.
         // The code provided here is for illustration only, and
         // can be deleted when you write your implementation.
 
@@ -57,7 +56,53 @@ public class PostfixEvaluator {
 
         while (!scanner.isEmpty()) {
             Token currToken = scanner.getToken();
-            System.out.println(currToken);
+            if (currToken.toString().equals("+")) {
+                if (stack.size() < 2) {
+                    throw new MalformedExpressionException();
+                }
+                double i = stack.pop().getValue();
+                double d = stack.pop().getValue();
+                double e = d + i;
+                Token current = new Token (e);
+                stack.push(current);
+
+
+            } else if (currToken.toString().equals("-")) {
+                if (stack.size() < 2) {
+                    throw new MalformedExpressionException();
+                }
+                double i = stack.pop().getValue();
+                double d = stack.pop().getValue();
+                double e = d - i;
+                Token current = new Token (e);
+                stack.push(current);
+            } else if (currToken.toString().equals("*")) {
+                if (stack.size() < 2) {
+                    throw new MalformedExpressionException();
+                }
+                double i = stack.pop().getValue();
+                double d = stack.pop().getValue();
+                double e = d * i;
+                Token current = new Token (e);
+                stack.push(current);
+
+            } else if (currToken.toString().equals("/")) {
+                if (stack.size() < 2) {
+                    throw new MalformedExpressionException();
+                } else {
+                    double i = stack.pop().getValue();
+                    double d = stack.pop().getValue();
+                    double e = d / i;
+                    Token current = new Token (e);
+                    stack.push(current);
+                }
+
+            } else {
+                stack.add(currToken);
+            }
+
+
+
 
             // add your code here
             // now process the token, etc.
@@ -69,6 +114,8 @@ public class PostfixEvaluator {
 
             scanner.eatToken();
         }
+
+
 
         if (stack.size() == 1) {
             Token t = stack.pop();

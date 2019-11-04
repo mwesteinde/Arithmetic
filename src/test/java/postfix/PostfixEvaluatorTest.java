@@ -32,4 +32,9 @@ public class PostfixEvaluatorTest {
         new PostfixEvaluator("+").eval();
     }
 
+    @Test
+    public void test6() throws MalformedExpressionException {
+        assertEquals(5, new PostfixEvaluator("15 7 1 1 + - / 3 * 2 1 1 + + -").eval(), 0);
+    }
+
 }
