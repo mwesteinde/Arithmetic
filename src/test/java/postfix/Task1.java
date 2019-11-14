@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import parser.MalformedExpressionException;
 
-public class PostfixEvaluatorTest {
+public class Task1 {
 
 	@Test
 	public void test1() throws MalformedExpressionException {
@@ -34,7 +34,17 @@ public class PostfixEvaluatorTest {
 
     @Test
     public void test6() throws MalformedExpressionException {
-        assertEquals(5, new PostfixEvaluator("15 7 1 1 + - / 3 * 2 1 1 + + -").eval(), 0);
+        assertEquals(200, new PostfixEvaluator("10 10 + 10 *").eval(), 0);
+    }
+
+    @Test
+    public void test7() throws MalformedExpressionException {
+        assertEquals(10, new PostfixEvaluator("5 5 / 10 *").eval(), 0);
+    }
+
+    @Test
+    public void test8() throws MalformedExpressionException {
+        assertEquals(-99, new PostfixEvaluator("6 3 - 10 - 5 * 2 + 3 *").eval(), 0);
     }
 
 }
